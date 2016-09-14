@@ -181,7 +181,6 @@ sub parse_time ($) {
             # do nothing
         }
     }
-
     return $tm;
 }
 
@@ -199,7 +198,6 @@ sub cleanup () {
     # for my $hdl (@CleanupHandlers) {
     #    $hdl->();
     # }
-
 }
 
 sub get_pid_from_pidfile ($) {
@@ -239,7 +237,6 @@ sub setup_server_root () {
                 bail_out "Can't remove $ServRoot (not empty?)";
             system("rm ./init_data.lua > /dev/null") == 0 or
                 bail_out "Can't remove init_data";
-        
     }
 
     
@@ -280,7 +277,6 @@ sub write_config_file ($$) {
 
     my $server_name = 'localhost';
 
-
     $http_config = expand_env_in_config($http_config);
 
     if (!defined $config) {
@@ -313,13 +309,9 @@ $init_env
 }
 _EOC_
 close $out_env;
-
-
-
 }
 
 sub run_tests() {
-
     for my $block (Test::Base::blocks()){
         for my $hdl (@BlockPreprocessors) {
             $hdl->($block);
@@ -329,8 +321,6 @@ sub run_tests() {
         # system("kill -9 $pid");
         system("killall nginx");
     }
-
-    
 }
 
 sub expand_env_in_config ($) {
@@ -385,7 +375,6 @@ start_nginx:
     sleep $TestNginxSleep;
 
 request:
-
 
     my $i = 0;
     $ErrLogFilePos = 0;
