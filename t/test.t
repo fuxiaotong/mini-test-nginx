@@ -1,5 +1,5 @@
 use lib 'lib';
-use My::Test::Socket 'no_plan'; 
+use My::Test::Socket 'no_plan';
 
 $ENV{TEST_NGINX_RESOLVER} = '8.8.8.8';
 $ENV{TEST_NGINX_REDIS_PORT} ||= 6379;
@@ -12,7 +12,7 @@ run_tests();
 
 __DATA__
 
-=== TEST 1: test_heartbeat 
+=== TEST 1: test1
 
 --- init_env
 local redis = require "resty.redis"
@@ -28,8 +28,8 @@ if not ok then
     return
 end
 
-red:hmset("client_check_query_" .. mid, "1", "2")
-red:zadd("heartbeats", 16, mid)
+red:hmset("test1" .. mid, "1", "2")
+red:zadd("test2", 1, mid)
 
 red:close()
 
